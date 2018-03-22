@@ -47,7 +47,7 @@ if makeexcel:
     #df = parseexcel("FullDescriptions.csv.xlsx")
     dfexcel = pd.DataFrame(columns=['course', 'keywords', 'description'])
 
-    with open("changedDengComments.txt") as fp:
+    with open("dengCommentsStrip.txt") as fp:
         #completeFile = fp.read()
         lines = fp.readlines()
         fp.close()
@@ -63,7 +63,7 @@ if makeexcel:
                                               columns=['course', 'keywords', 'description']), ignore_index=True)
         except:
             pass
-    writer = pd.ExcelWriter('dengOutputLines.xlsx')
+    writer = pd.ExcelWriter('dengCommentsOutputLines.xlsx')
     dfexcel.to_excel(writer, 'Sheet1')
     writer.save()
 
