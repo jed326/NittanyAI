@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NittanyAi</title>
+</head>
+<body>
+<div id="fb-root"></div>
+
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '380954415706493',
+      xfbml      : true,
+      version    : 'v2.12'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+    (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=380954415706493&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+hello
+
+
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+
+
+</body>
+
+</html>
