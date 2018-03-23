@@ -1,0 +1,7 @@
+https://artandlogic.com/2014/04/tutorial-adding-facebooktwittergoogle-authentication-to-a-django-application/
+
+python3 manage.py runsslserver 127.0.0.1:9000 to runserver
+
+fix errors related and make a new postgresql database and see wtf is inside it rn. 
+
+

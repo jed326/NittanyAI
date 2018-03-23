@@ -14,10 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 from django.urls import path, include
+from social_django.urls import urlpatterns, app_name
 
+admin.autodiscover()
 
 urlpatterns = [
-    path('', include('nittanyai.urls')),
+    path('', include('nittanyai.urls'), name = 'home'),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    path('', include(('django.contrib.auth.urls', 'auth'), namespace = 'auth' )),
     path('admin/', admin.site.urls),
 ]

@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>NittanyAi</title>
-</head>
-<body>
-<div id="fb-root"></div>
+{% extends 'base.html' %}
+{%  block content %}
+    <h2>Homepage</h2>
+    hello
 
-<script>
+<!--<script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '380954415706493',
@@ -23,14 +19,37 @@
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=380954415706493&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-hello
+}(document, 'script', 'facebook-jssdk'));
+</script>
+    <div id="fb-root">
+
+        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+    </div>
 
 
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+-->
+<div>
+ <h1>Third-party authentication demo</h1>
+
+<p>
+   <ul>
+   {% if user and not user.is_anonymous %}
+     <li>
+       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
+     </li>
+     <li>
+       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+     </li>
+   {% else %}
+     <li>
+       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+     </li>
+   {% endif %}
+   </ul>
+ </p>
+</div>
 
 
+{% endblock %}
 
-</body>
-
-</html>
