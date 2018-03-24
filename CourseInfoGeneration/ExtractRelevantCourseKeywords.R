@@ -1,5 +1,7 @@
 #Cuyler Luck, 3/23/18
 
+#WARNING: will not provide relevances for keywords that IBM returned with a "," in the phrase. This seems to be a very rare problem.
+
 #goes through messy keyword file from IBM Watson and returns all keywords and relevances for each subject separated into individual rows
 #output: .csv with course keywords and course relevances in columns
 
