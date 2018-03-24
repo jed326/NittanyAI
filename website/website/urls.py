@@ -25,5 +25,6 @@ urlpatterns = [
     path('', include('nittanyai.urls'), name = 'home'),
     url('', include('social.apps.django_app.urls', namespace='social')),
     path('', include(('django.contrib.auth.urls', 'auth'), namespace = 'auth' )),
+    path('data/',include('data.urls'), name = 'data'),
     path('admin/', admin.site.urls),
 ]

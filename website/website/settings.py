@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'data.apps.DataConfig',
     'social.apps.django_app.default',
     'sslserver',
 ]
@@ -80,8 +81,12 @@ WSGI_APPLICATION = 'website.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'nittanyai',
+        'USER': 'nittanyaiuser',
+        'PASSWORD': 'nittanyai',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -106,12 +111,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
+SOCIAL_AUTH_SCOPE = ['user_likes']
 
 SOCIAL_AUTH_FACEBOOK_KEY = '380954415706493'
 SOCIAL_AUTH_FACEBOOK_SECRET = '570c6e129e186519a5ce3bc8d1ea6379'

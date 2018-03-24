@@ -41,6 +41,11 @@
      <li>
        <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
      </li>
+
+     <li>
+
+        <a href="{% url 'data' %}">Find Keywords</a>
+     </li>
    {% else %}
      <li>
        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
