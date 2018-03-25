@@ -4,9 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class PagesLiked(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    uuid = models.UUIDField(null = True)
     accesstoken = models.CharField(max_length = 300)
-    likedpages = models.CharField(max_length = 600)
-
-    def __str__(self):
-        return self.id
+    abouttext = models.TextField(blank= True, null = True)
+    missiontext = models.TextField(blank = True, null = True)

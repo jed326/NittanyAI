@@ -9,7 +9,7 @@ from django.utils.html import format_html
 
 
 class PagesLikedadmin(admin.ModelAdmin):
-    formfield_overrides = {
+   formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 60})},
     }
 
