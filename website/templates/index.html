@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%  block content %}
     <div class = "backgroundimage">
-            <h3>CourseAI</h3>
+            <h3>GenAId</h3>
         {% if user and not user.is_anonymous %}
             <h2>Welcome {{ user.get_full_name|default:user.username }}!</h2>
         {% else %}
@@ -13,7 +13,9 @@
                 {% if user and not user.is_anonymous %}
                 <li class = "li-1"><a href="{% url 'data' %}"><div class = "colorchange">Data</div></a></li>
                 {% endif %}
-                <li class = "li-1"><a href="/people"><div class = "colorchange">People</div></a></li>
+                {% if user and not user.is_anonymous %}
+                <li class = "li-1"><a href="{% url 'courses' %}"><div class = "colorchange">Recommended Courses</div></a></li>
+                {% endif %}
                 {% if user and not user.is_anonymous %}
                 <li class = "li-1"><a href="{% url 'auth:logout' %}?next={{ request.path }}"><div class = "colorchange">Logout</div></a></li>
                 {% else %}
@@ -49,6 +51,23 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class = "backgroundimage">
+            <div class = "container">
+                <div class = "row">
+                 <section class = "col-sm-12 col-md-12 col-lg-12 col-x1-12">
+                     <p class = "footertext">
+                         Work In Progress For NittanyAI
+                     </p>
+                     <a href="https://github.com/jed326/NittanyAI"><i class="fa fa-github center"  style="font-size:36px"></i></a>
+
+                 </section>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
 {% endblock %}
 

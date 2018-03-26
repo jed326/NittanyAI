@@ -80,3 +80,19 @@ li {
     color: black;
     margin-bottom: 10px;
 }
+
+.footertext {
+    font-family: 'Space Mono', monospace;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+
+.center {
+    display: block;
+    text-align: center;
+    margin-left: 50%;
+    margin-bottom: 10px;
+}

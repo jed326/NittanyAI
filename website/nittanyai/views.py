@@ -77,3 +77,9 @@ def index(request):
 
     return render(request, 'index.html', context)
 
+
+
+def courses(request):
+    context = {'request': request,
+               'user': request.user}
+    return render(request, 'courses.html', context)

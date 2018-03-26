@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{%  block content %}
+    <div class = "backgroundimage">
+            <h3>GenAId</h3>
+        {% if user and not user.is_anonymous %}
+            <h2>Welcome {{ user.get_full_name|default:user.username }}!</h2>
+        {% else %}
+            <h2>A Work In Progress</h2>
+        {% endif %}
+        <div class = "nav2">
+            <ul>
+                <li class = "li-1"><a href="{% url 'index' %}"><div class = "colorchange">Home</div></a></li>
+                {% if user and not user.is_anonymous %}
+                <li class = "li-1"><a href="{% url 'data' %}"><div class = "colorchange">Data</div></a></li>
+                {% endif %}
+                {% if user and not user.is_anonymous %}
+                <li class = "li-1"><a href="{% url 'courses' %}"><div class = "colorchange">Recommended Courses</div></a></li>
+                {% endif %}
+                {% if user and not user.is_anonymous %}
+                <li class = "li-1"><a href="{% url 'auth:logout' %}?next={{ request.path }}"><div class = "colorchange">Logout</div></a></li>
+                {% else %}
+                <li class = "li-1"><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><div class = "colorchange">Login With Facebook</div></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
