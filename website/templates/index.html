@@ -1,60 +1,54 @@
 {% extends 'base.html' %}
 {%  block content %}
-    <h2>Homepage</h2>
-    hello
-
-<!--<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '380954415706493',
-      xfbml      : true,
-      version    : 'v2.12'
-    });
-    FB.AppEvents.logPageView();
-  };
-
-    (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=380954415706493&autoLogAppEvents=1';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
-    <div id="fb-root">
-
-        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-
+    <div class = "backgroundimage">
+            <h3>CourseAI</h3>
+        {% if user and not user.is_anonymous %}
+            <h2>Welcome {{ user.get_full_name|default:user.username }}!</h2>
+        {% else %}
+            <h2>A Work In Progress</h2>
+        {% endif %}
+        <div class = "nav2">
+            <ul>
+                <li class = "li-1"><a href="{% url 'index' %}"><div class = "colorchange">Home</div></a></li>
+                {% if user and not user.is_anonymous %}
+                <li class = "li-1"><a href="{% url 'data' %}"><div class = "colorchange">Data</div></a></li>
+                {% endif %}
+                <li class = "li-1"><a href="/people"><div class = "colorchange">People</div></a></li>
+                {% if user and not user.is_anonymous %}
+                <li class = "li-1"><a href="{% url 'auth:logout' %}?next={{ request.path }}"><div class = "colorchange">Logout</div></a></li>
+                {% else %}
+                <li class = "li-1"><a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}"><div class = "colorchange">Login With Facebook</div></a></li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 
+    <div class = "backgroundbody">
+        <div class = "container">
+            <div class = "row">
+                 <section class = "col-sm-12 col-md-12 col-lg-12 col-x1-12">
+                      <div class = "aboutheader">
+                          What we do
+                      </div>
+                      <p class = "abouttext">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac tellus ac orci lobortis hendrerit. Vestibulum in mi commodo,
+                        elementum lacus eget, mollis mi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus non
+                        dignissim orci, vel lacinia quam. Fusce ultricies luctus magna, non vehicula ante. Vestibulum vel rhoncus nisi. Cras pharetra felis in nisl
+                        aliquet, non commodo augue aliquet. Duis sed gravida tortor. Sed sit amet enim sed quam lacinia pretium id euismod tortor. Suspendisse
+                        ultrices urna id dictum pretium. Nullam tristique quis nisl vitae tristique.
+                      </p>
 
--->
-<div>
- <h1>Third-party authentication demo</h1>
+                      <p class = "abouttext">
+                         Mauris at ligula pulvinar, tincidunt ligula eu, euismod mauris. Maecenas gravida orci felis, eu interdum neque tristique in. Integer et interdum nisi. Mauris vehicula, est et vulputate mollis, nunc eros mattis velit, vitae maximus sem lectus et nibh. Aliquam erat volutpat. Praesent elementum enim vitae iaculis porttitor. Sed vitae pellentesque ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vitae vulputate risus. Vivamus pharetra nisl vel ante eleifend, ut semper sapien pretium. Donec laoreet tortor vel condimentum commodo. Phasellus vitae justo malesuada, pulvinar turpis at, pellentesque neque. Morbi sodales porttitor orci sit amet finibus. Ut nulla mi, tempor sit amet tincidunt eu, lobortis quis massa. Donec nec venenatis diam, venenatis aliquam odio. Ut in tristique metus.
+                      </p>
 
-<p>
-   <ul>
-   {% if user and not user.is_anonymous %}
-     <li>
-       <a>Hello {{ user.get_full_name|default:user.username }}!</a>
-     </li>
-     <li>
-       <a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
-     </li>
-
-     <li>
-
-        <a href="{% url 'data' %}">Find Keywords</a>
-     </li>
-   {% else %}
-     <li>
-       <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
-     </li>
-   {% endif %}
-   </ul>
- </p>
-</div>
-
+                      <p class = "abouttext">
+                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis consectetur nec leo hendrerit rhoncus. Suspendisse venenatis augue ex, at ultricies ipsum interdum quis. Mauris pharetra suscipit tristique. Pellentesque ut ligula condimentum, laoreet risus et, fringilla risus. Cras porta mauris nec turpis rhoncus, ac convallis dolor sollicitudin. Donec id tincidunt diam.
+                      </p>
+                 </section>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
 

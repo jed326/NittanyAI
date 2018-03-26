@@ -1,5 +1,29 @@
 {% extends 'base.html' %}
 {%  block content %}
     <h2>Data page</h2>
+    {% if user and not user.is_anonymous %}
+        <a>Hello {{ user.get_full_name|default:user.username }}!</a>
 
+        here are your pages
+        {% if isfacebook == False%}
+            Please log in with facebook!
+        {% endif %}
+        {% for pages in pagesliked %}
+            {%  if pages.pagename %}
+                <h3>{{ pages.pagename }}</h3>
+            {% endif %}
+
+            {% if pages.abouttext %}
+                <h2>description</h2>
+                <h1>{{ pages.abouttext }}</h1>
+            {% endif %}
+
+            {% if pages.missiontext %}
+                <h2>mission</h2>
+                <h1>{{ pages.missiontext }}</h1>
+            {% endif %}
+         {% endfor %}
+    {% else %}
+        Please log in with facebook!
+    {% endif %}
 {%  endblock %}

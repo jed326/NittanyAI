@@ -1,0 +1,82 @@
+.backgroundimage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: table;
+    background-position: 0 0px;
+    background-image: url('../img/ai2.jpg');
+}
+
+h3 {
+    font-family: 'Space Mono', monospace;
+    margin-top: 150px;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+h2 {
+    font-family: 'Space Mono', monospace;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+}
+
+.nav2 {
+    width: 100%;
+    height: 70px;
+    font-family: 'Space Mono', monospace;
+    font-size: 26px;
+    font-weight: 600;
+    display: inline-block;
+    color: white;
+    margin-top: 80px;
+    text-align: center;
+    background-color: #142F4D;
+    opacity: 0.5;
+    margin-left: -10px;
+}
+
+.li-1 {
+    list-style-type: none;
+    text-align: center;
+    margin-top: 15px;
+}
+
+li {
+    text-align: center;
+    display: inline-block;
+}
+
+
+.colorchange{
+    color: white;
+}
+
+.colorchange:hover {
+    border-bottom: 3px solid #fff;
+}
+
+.backgroundbody {
+    background-color: #F5F5F5;
+}
+
+.abouttext {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-color: black;
+
+}
+
+.aboutheader {
+    font-family: 'Space Mono', monospace;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: 600;
+    text-align: left;
+    color: black;
+    margin-bottom: 10px;
+}

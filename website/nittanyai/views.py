@@ -22,33 +22,46 @@ def index(request):
                 provider='facebook',
             ).first()
             access_token = social_user.extra_data['access_token']
-            has_next_page = True;
+            has_next_page = True
 
             # construct the URL string
             base = "https://graph.facebook.com/v2.12"
             node = "/me/" + "?fields=likes%7Bname%2Cabout%2Cmission%2Cgeneral_info%7D"
             parameters = "&access_token=%s" % access_token
             url = base + node + parameters
-            abouttext = []
-            missiontext = []
-
+            PagesLiked.objects.filter(id2 = int(id)).delete()
             while has_next_page:
                 req = urllib.request.Request(url)
                 response = urllib.request.urlopen(req).read().decode('utf8')
                 data = json.loads(response)
+                pagesliked = PagesLiked()
+                pagesliked.id2 = id
+                pagesliked.accesstoken = access_token
 
                 if 'likes' in data.keys():
                     for pages in data['likes']['data']:
                         if ('about' in pages.keys()):
-                            abouttext.append(pages['about'])
+                            pagesliked.abouttext = pages['about']
                         if ('mission' in pages.keys()):
-                            missiontext.append(pages['mission'])
+                            pagesliked.missiontext = pages['mission']
+                        if ('name' in pages.keys()):
+                            pagesliked.pagename = pages['name']
+                        pagesliked.id2 = id
+                        pagesliked.accesstoken = access_token
+                        pagesliked.save()
+                        pagesliked = PagesLiked()
                 elif 'data' in data.keys():
                     for pages in data['data']:
                         if ('about' in pages.keys()):
-                            abouttext.append(pages['about'])
+                            pagesliked.abouttext = pages['about']
                         if ('mission' in pages.keys()):
-                            missiontext.append(pages['mission'])
+                            pagesliked.missiontext = pages['mission']
+                        if ('name' in pages.keys()):
+                            pagesliked.pagename = pages['name']
+                        pagesliked.id2 = id
+                        pagesliked.accesstoken = access_token
+                        pagesliked.save()
+                        pagesliked = PagesLiked()
 
                 if 'likes' in data.keys():
                     if 'paging' in data['likes'].keys():
@@ -60,10 +73,7 @@ def index(request):
                 else:
                     has_next_page = False
 
-            pagesliked = PagesLiked()
-            pagesliked.accesstoken = access_token
-            pagesliked.abouttext = abouttext
-            pagesliked.missiontext = missiontext
-            pagesliked.save()
+
+
     return render(request, 'index.html', context)
 
