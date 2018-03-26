@@ -26,11 +26,13 @@ def index(request):
 
             # construct the URL string
             base = "https://graph.facebook.com/v2.12"
-            node = "/me/" + "?fields=likes%7Bname%2Cabout%2Cmission%2Cgeneral_info%7D"
+            node = "/me" + "?fields=likes%7Bname%2Cabout%2Cmission%2Cgeneral_info%7D"
             parameters = "&access_token=%s" % access_token
             url = base + node + parameters
             PagesLiked.objects.filter(id2 = int(id)).delete()
+            print(url)
             while has_next_page:
+                print("xd")
                 req = urllib.request.Request(url)
                 response = urllib.request.urlopen(req).read().decode('utf8')
                 data = json.loads(response)
@@ -67,12 +69,19 @@ def index(request):
                     if 'paging' in data['likes'].keys():
                         if ('next' in data['likes']['paging'].keys()):
                             url = data['likes']['paging']['next']
+                        else:
+                            has_next_page = False
+                    else:
+                        has_next_page = False
                 elif 'paging' in data.keys():
                     if ('next' in data['paging'].keys()):
                         url = data['paging']['next']
+                    else:
+                        has_next_page = False
                 else:
                     has_next_page = False
-
+            print(id)
+            print(data)
 
 
     return render(request, 'index.html', context)
